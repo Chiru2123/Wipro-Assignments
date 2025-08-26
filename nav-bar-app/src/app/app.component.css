@@ -1,0 +1,43 @@
+/* Navbar container */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #2c3e50;
+  padding: 10px 20px;
+  border-radius: 6px;
+}
+
+/* Brand / Title */
+.navbar .brand {
+  color: #ecf0f1;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Links container */
+.navbar .nav-links {
+  display: flex;
+  gap: 15px;
+}
+
+/* Links style */
+.navbar a {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+/* Hover effect */
+.navbar a:hover {
+  background: #34495e;
+}
+
+/* Active link highlight */
+.navbar a.active {
+  background: #1abc9c;
+  color: white;
+}
