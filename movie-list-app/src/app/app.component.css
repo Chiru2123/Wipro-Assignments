@@ -1,0 +1,52 @@
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 16px;
+  flex-wrap: wrap;
+}
+
+.average-rating {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.movie-grid {
+  padding: 16px;
+}
+
+.movie-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.3s ease;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+}
+
+mat-card img {
+  height: 250px;
+  object-fit: cover;
+}
+
+.top-rated {
+  border: 3px solid gold;
+}
+
+.stars {
+  color: #ccc;
+}
+
+.stars .filled {
+  color: gold;
+}
+
+.no-movies {
+  text-align: center;
+  margin-top: 20px;
+  font-style: italic;
+}

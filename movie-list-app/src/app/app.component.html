@@ -1,0 +1,51 @@
+<mat-toolbar color="primary">
+  🎬 Movie List App
+</mat-toolbar>
+
+<div class="controls">
+  <mat-form-field appearance="fill">
+    <mat-label>Filter by Genre</mat-label>
+    <mat-select [(ngModel)]="selectedGenre">
+      <mat-option value="All">All</mat-option>
+      <mat-option *ngFor="let g of ['Drama','Action']" [value]="g">
+        {{ g }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="average-rating">
+    ⭐ Average Rating: {{ averageRating }}
+  </div>
+</div>
+
+<div class="movie-grid">
+  <!-- bind cols dynamically -->
+  <mat-grid-list [cols]="cols" rowHeight="1:1.3" gutterSize="16" class="grid-container"
+    *ngIf="filteredMovies.length > 0; else noMovies">
+
+    <mat-grid-tile *ngFor="let movie of filteredMovies">
+      <mat-card class="movie-card" [ngClass]="{ 'top-rated': movie.rating >= 5 }">
+        
+        <img mat-card-image [src]="movie.poster" [alt]="movie.title">
+
+        <mat-card-header>
+          <mat-card-title>{{ movie.title }}</mat-card-title>
+          <mat-card-subtitle>{{ movie.genre }}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          <p>{{ movie.description }}</p>
+          <div class="stars">
+            <mat-icon *ngFor="let i of [1,2,3,4,5]" [class.filled]="i <= movie.rating">
+              star
+            </mat-icon>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+<ng-template #noMovies>
+  <p class="no-movies">No movies available for this genre.</p>
+</ng-template>
