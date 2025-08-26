@@ -1,0 +1,60 @@
+<div class="page-container">
+  <mat-card>
+    <h2>Feedback Form</h2>
+
+    <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
+
+      <!-- Name -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" />
+      </mat-form-field>
+      <mat-error>{{ getError('name') }}</mat-error>
+
+      <!-- Email -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" />
+      </mat-form-field>
+      <mat-error>{{ getError('email') }}</mat-error>
+
+      <!-- Subject -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Subject</mat-label>
+        <input matInput formControlName="subject" maxlength="40" />
+        <mat-hint align="end">
+          {{ feedbackForm.get('subject')?.value?.length || 0 }}/40
+        </mat-hint>
+      </mat-form-field>
+      <mat-error>{{ getError('subject') }}</mat-error>
+
+      <!-- Comments -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Comments</mat-label>
+        <textarea
+          matInput
+          formControlName="comments"
+          rows="4"
+          maxlength="350"
+        ></textarea>
+        <mat-hint align="end">
+          {{ feedbackForm.get('comments')?.value?.length || 0 }}/350
+        </mat-hint>
+      </mat-form-field>
+      <mat-error>{{ getError('comments') }}</mat-error>
+
+      <!-- Submit Button -->
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="feedbackForm.invalid"
+      >
+        Submit
+      </button>
+    </form>
+
+    <!-- Thank You Message -->
+    <p class="thank-you">{{ submittedMessage }}</p>
+  </mat-card>
+</div>
