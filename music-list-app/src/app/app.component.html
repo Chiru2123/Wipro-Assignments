@@ -1,0 +1,42 @@
+<mat-toolbar color="primary">
+  <mat-icon>library_music</mat-icon>
+  <span style="margin-left: 10px;">Music Playlist App</span>
+</mat-toolbar>
+
+<div class="filters">
+  <mat-form-field appearance="outline">
+    <mat-label>Filter by Artist</mat-label>
+    <mat-select [(ngModel)]="selectedArtist">
+      <mat-option value="">All</mat-option>
+      <mat-option *ngFor="let a of artists" [value]="a">{{ a }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Filter by Album</mat-label>
+    <mat-select [(ngModel)]="selectedAlbum">
+      <mat-option value="">All</mat-option>
+      <mat-option *ngFor="let a of albums" [value]="a">{{ a }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div class="song-grid">
+  <mat-card *ngFor="let song of filteredSongs" [ngClass]="{'top-rated': isTopRated(song.rating)}">
+    <img mat-card-image [src]="song.image" alt="{{song.name}}">
+    <mat-card-title>{{ song.name }}</mat-card-title>
+
+    <mat-card-content>
+      <p><strong>Artist:</strong> {{ song.artist }}</p>
+      <p><strong>Movie:</strong> {{ song.album }}</p>
+      <p><strong>Duration:</strong> {{ song.duration }}</p>
+      <p><strong>Rating:</strong> {{ song.rating }}</p>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-icon-button color="primary">
+        <mat-icon>play_arrow</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
